@@ -21,6 +21,9 @@ export default class Building {
 
   // Abstract method that must be implemented by subclasses
   evacuationWarningMessage() {
-    throw new Error('Class extending Building must override evacuationWarningMessage');
+    // Use this to satisfy ESLint and indicate method must be overridden
+    if (this instanceof Building) {
+      throw new Error('Class extending Building must override evacuationWarningMessage');
+    }
   }
 }

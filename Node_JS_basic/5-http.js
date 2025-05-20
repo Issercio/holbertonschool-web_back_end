@@ -39,10 +39,13 @@ const app = http.createServer(async (req, res) => {
     try {
       const dbFile = process.argv[2];
       const studentsData = await countStudents(dbFile);
-      res.end(`This is the list of our students\n${studentsData}`);
+      res.end(`This is the list of our students\n${studentsData.trim()}`);
     } catch (error) {
       res.end(`This is the list of our students\n${error.message}`);
     }
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not found');
   }
 });
 

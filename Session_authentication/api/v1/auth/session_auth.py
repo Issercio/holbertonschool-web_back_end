@@ -3,6 +3,7 @@
 """
 from api.v1.auth.auth import Auth
 from uuid import uuid4
+from typing import TypeVar
 
 
 class SessionAuth(Auth):
@@ -46,3 +47,26 @@ class SessionAuth(Auth):
         
         # Use .get() to retrieve the User ID for the session_id
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """ Returns a User instance based on a cookie value
+        Args:
+            request: Flask request object
+        Returns:
+            User instance or None
+        """
+        # Get the session cookie from the request
+        session_id = self.session_cookie(request)
+        
+        if session_id is None:
+            return None
+        
+        # Get the user_id from the session_id
+        user_id = self.user_id_for_session_id(session_id)
+        
+        if user_id is None:
+            return None
+        
+        # Import User model and get the user instance
+        from models.user import User
+        return User.get(user_id)

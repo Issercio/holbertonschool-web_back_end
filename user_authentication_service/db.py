@@ -37,3 +37,12 @@ class DB:
         """Return the first user matching the provided query arguments."""
         user = self._session.query(User).filter_by(**kwargs).one()
         return user
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """Update attributes of a user identified by user_id."""
+        user = self.find_user_by(id=user_id)
+        for key, value in kwargs.items():
+            if not hasattr(User, key):
+                raise ValueError()
+            setattr(user, key, value)
+        self._session.commit()

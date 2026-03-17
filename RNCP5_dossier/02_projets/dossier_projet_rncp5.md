@@ -9,7 +9,7 @@
 - **Titre du projet**: FloraShop — Pivoine & Lilas, Application e-commerce pour artisan fleuriste
 - **Nom et prenom du candidat**: Jaille Dimitri
 - **Date**: Mars 2026
-- **Titre professionnel vise**: Developpeur Web et Web Mobile (DWWM) - RNCP Niveau 5 (Code RNCP 37674)
+- **Titre professionnel vise**: Developpeur Web et Web Mobile (DWWM) - RNCP Niveau 5 
 - **Organisme de formation**: Holberton School
 - **Session**: 2025-2026
 

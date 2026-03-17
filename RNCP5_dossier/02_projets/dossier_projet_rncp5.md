@@ -53,6 +53,11 @@ Le projet couvre l ensemble des competences du referentiel DWWM : maquettage d i
 5. [Conclusion](#conclusion)
 6. [Bibliographie](#bibliographie)
 7. [Annexes](#annexes)
+   - 7.1 Swagger UI (documentation API)
+   - 7.2 Donnees initiales
+   - 7.3 Historique des migrations
+   - 7.4 Glossaire technique
+   - 7.5 Structure du projet
 
 ---
 
@@ -741,6 +746,60 @@ document.getElementById('payment-form').addEventListener('submit', async (event)
 
 ## Elements significatifs cote back-end
 
+### Architecture technique de l application
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     NAVIGATEUR CLIENT                          │
+│  HTML5 / CSS3 / JavaScript (api.js, auth.js) / Stripe.js v3   │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │ HTTP / HTTPS (JSON)
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     SERVEUR FLASK (Python 3.10)                │
+│                                                                │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────┐  │
+│  │  Flask-RESTX │  │   Jinja2     │  │   Flask-Migrate      │  │
+│  │  (API REST)  │  │  (Templates) │  │   (Alembic)          │  │
+│  └──────┬───────┘  └──────┬───────┘  └──────────────────────┘  │
+│         │                 │                                    │
+│  ┌──────┴─────────────────┴───────────────────────────┐        │
+│  │              Services metier                        │        │
+│  │  StripeService  │  Facade  │  Auth (PyJWT)          │        │
+│  └──────┬──────────────────┬──────────────────────────┘        │
+│         │                  │                                   │
+│  ┌──────┴──────────────────┴───────────────────────────┐       │
+│  │            Repositories (Pattern Repository)         │       │
+│  │  CategoryRepo │ ProductRepo │ UserRepo │ PriceRepo   │       │
+│  └──────────────────────────┬──────────────────────────┘       │
+│                             │                                  │
+│  ┌──────────────────────────┴──────────────────────────┐       │
+│  │           SQLAlchemy ORM (Models)                    │       │
+│  │  User │ Product │ Category │ Order │ OrderItem │ ... │       │
+│  └──────────────────────────┬──────────────────────────┘       │
+└─────────────────────────────┼──────────────────────────────────┘
+                              │ SQL (psycopg2)
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              POSTGRESQL (base florashop)                        │
+│  7 tables : users, categories, products, orders,               │
+│             order_items, reviews, prices                        │
+└─────────────────────────────────────────────────────────────────┘
+
+           Integrations externes :
+           ┌──────────────────────────┐
+           │     API Stripe           │
+           │  Payment Intents         │
+           │  Webhooks (signatures)   │
+           └──────────────────────────┘
+```
+
+**Argumentation :**
+
+- **Architecture 3-tiers** : la separation entre le navigateur (presentation), le serveur Flask (logique metier) et PostgreSQL (donnees) garantit la maintenabilite et la scalabilite.
+- **Couches internes du serveur** : les routes (Flask-RESTX) delegent aux services metier, qui delegent aux repositories, qui utilisent l ORM SQLAlchemy. Cette architecture en couches facilite les tests et la reutilisation du code.
+- **Integration externe** : l API Stripe est appelee uniquement depuis le `StripeService` cote serveur (jamais directement depuis le client), sauf Stripe.js qui communique directement avec Stripe pour les donnees bancaires (conformite PCI DSS).
+
 ### Presentation de la base de donnees
 
 #### Schema conceptuel (MCD) - donnees et relations
@@ -1367,6 +1426,8 @@ L interface Swagger UI est accessible a l adresse `http://localhost:5000/api/v1`
 
 ![Swagger UI - FloraShop API](screenshots/swagger_desktop.png)
 
+![Swagger UI - Mobile](screenshots/swagger_mobile.png)
+
 L API REST est documentee automatiquement via Flask-RESTX. Les endpoints couvrent :
 - Auth : POST /auth/login, POST /auth/register
 - Products : GET, POST, PUT, DELETE /products
@@ -1394,7 +1455,32 @@ L API REST est documentee automatiquement via Flask-RESTX. Les endpoints couvren
 | 5 | 6c350306a292 | Ajout de la colonne is_on_sale a la table products |
 | 6 | 415260e111d3 | Suppression de product_id de la table reviews |
 
-### Annexe 4 - Structure du projet
+### Annexe 4 - Glossaire technique
+
+| Terme | Definition |
+|---|---|
+| **API** | Application Programming Interface — interface permettant a deux logiciels de communiquer entre eux |
+| **REST** | Representational State Transfer — style d architecture pour les API web utilisant les methodes HTTP (GET, POST, PUT, DELETE) |
+| **CRUD** | Create, Read, Update, Delete — les 4 operations de base sur les donnees |
+| **ORM** | Object-Relational Mapping — technique de correspondance entre les objets Python et les tables de la base de donnees |
+| **JWT** | JSON Web Token — standard de token d authentification signe permettant de verifier l identite d un utilisateur |
+| **MVC** | Model-View-Controller — patron d architecture separant les donnees, l affichage et la logique de controle |
+| **MCD** | Modele Conceptuel de Donnees — representation abstraite des entites et de leurs relations (methode Merise) |
+| **MLD** | Modele Logique de Donnees — traduction du MCD en tables relationnelles avec colonnes et cles |
+| **CORS** | Cross-Origin Resource Sharing — mecanisme de securite du navigateur controlant les requetes entre domaines differents |
+| **CSRF** | Cross-Site Request Forgery — attaque forcant un utilisateur authentifie a executer une action non souhaitee |
+| **XSS** | Cross-Site Scripting — attaque injectant du code JavaScript malveillant dans une page web |
+| **OWASP** | Open Web Application Security Project — organisme de reference pour la securite des applications web |
+| **PCI DSS** | Payment Card Industry Data Security Standard — norme de securite pour le traitement des donnees de cartes bancaires |
+| **Webhook** | Mecanisme de notification HTTP par lequel un service externe (ex. Stripe) envoie des evenements a notre serveur |
+| **Payment Intent** | Objet Stripe representant une tentative de paiement, du montant initial a la confirmation finale |
+| **Facade** | Patron de conception fournissant une interface simplifiee a un ensemble de sous-systemes complexes |
+| **Repository** | Patron de conception isolant la logique d acces aux donnees de la logique metier |
+| **Factory** | Patron de conception encapsulant la creation d objets complexes (ici : `create_app()` cree l application Flask) |
+| **Responsive** | Conception d interfaces web s adaptant automatiquement a la taille de l ecran (desktop, tablette, mobile) |
+| **Breakpoint** | Seuil de largeur d ecran (en pixels) declenchant un changement de mise en page via media queries CSS |
+
+### Annexe 5 - Structure du projet
 
 ```
 Demo-day/Demoday/

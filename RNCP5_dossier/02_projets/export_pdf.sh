@@ -31,7 +31,7 @@ pandoc "$INPUT" \
   -V colorlinks=true \
   -V linkcolor=blue \
   -V urlcolor=blue \
-  -V header-includes='\usepackage{fancyhdr}\pagestyle{fancy}\fancyhead[L]{\small Dossier Projet RNCP 5}\fancyhead[R]{\small Jaille Dimitri}\fancyfoot[C]{\thepage}\usepackage{float}\floatplacement{figure}{H}\usepackage{fvextra}\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\footnotesize,breaklines,commandchars=\\\{\}}' \
+  -V header-includes='\usepackage{fancyhdr}\pagestyle{fancy}\fancyhead[L]{\small Dossier Projet RNCP 5}\fancyhead[R]{\small Jaille Dimitri}\fancyfoot[C]{\thepage}\fancyfoot[R]{\includegraphics[height=0.8cm]{screenshots/holberton_logo.png}}\usepackage{float}\floatplacement{figure}{H}\usepackage{fvextra}\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\footnotesize,breaklines,commandchars=\\\{\}}' \
   -V lang=fr \
   --highlight-style=tango \
   --columns=80 \

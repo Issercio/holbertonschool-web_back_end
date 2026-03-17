@@ -13,6 +13,10 @@
 - **Organisme de formation**: Holberton School
 - **Session**: 2025-2026
 
+![Logo Holberton School](screenshots/holberton_logo.png){ width=80px }
+
+![Page d accueil FloraShop - Pivoine & Lilas](screenshots/accueil_desktop.png)
+
 ---
 
 ## Remerciements

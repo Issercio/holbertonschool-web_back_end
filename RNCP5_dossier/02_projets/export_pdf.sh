@@ -17,8 +17,6 @@ cd "$DOSSIER_DIR"
 pandoc "$INPUT" \
   -o "$OUTPUT" \
   --pdf-engine=xelatex \
-  --toc \
-  --toc-depth=3 \
   -V documentclass=report \
   -V geometry:top=2cm \
   -V geometry:bottom=2cm \

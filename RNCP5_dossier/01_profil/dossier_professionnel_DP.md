@@ -61,7 +61,7 @@ En parallèle, j'ai réalisé un projet professionnel pour l'entreprise **Pivoin
 
 | Période | Intitulé du poste | Entreprise / Structure | Principales activités |
 |---|---|---|---|
-| Mars 2026 | Développeur Web (projet en entreprise) | Pivoine & Lilas (artisan fleuriste) | Conception, développement et déploiement d'une application e-commerce full-stack (FloraShop) : maquettage responsive, intégration HTML/CSS, développement JavaScript (panier, paiement Stripe), base de données PostgreSQL, API REST Flask-RESTX, sécurité applicative |
+| Juin 2025 | Développeur Web (projet en entreprise) | Pivoine & Lilas (artisan fleuriste) | Conception, développement et déploiement d'une application e-commerce full-stack (FloraShop) : maquettage responsive, intégration HTML/CSS, développement JavaScript (panier, paiement Stripe), base de données PostgreSQL, API REST Flask-RESTX, sécurité applicative |
 
 ### Compétences complémentaires
 
@@ -85,7 +85,7 @@ En parallèle, j'ai réalisé un projet professionnel pour l'entreprise **Pivoin
 | Champ | Information |
 |---|---|
 | Intitulé | Projet FloraShop — application e-commerce pour Pivoine & Lilas |
-| Dates | Mars 2026 |
+| Dates | Juin 2025 |
 | Lieu | Holberton School / Pivoine & Lilas |
 | Activité / service | Développement Web — conception des interfaces utilisateur |
 
@@ -123,7 +123,7 @@ Chaque maquette intégrait une approche *mobile-first* avec deux points de ruptu
 | Champ | Information |
 |---|---|
 | Intitulé | Projet FloraShop — application e-commerce pour Pivoine & Lilas |
-| Dates | Mars 2026 |
+| Dates | Juin 2025 |
 | Lieu | Holberton School / Pivoine & Lilas |
 | Activité / service | Développement Web — intégration front-end |
 
@@ -160,7 +160,7 @@ Chaque maquette intégrait une approche *mobile-first* avec deux points de ruptu
 | Champ | Information |
 |---|---|
 | Intitulé | Projet FloraShop — application e-commerce pour Pivoine & Lilas |
-| Dates | Mars 2026 |
+| Dates | Juin 2025 |
 | Lieu | Holberton School / Pivoine & Lilas |
 | Activité / service | Développement Web — interactions dynamiques front-end |
 
@@ -200,7 +200,7 @@ L'application nécessitait des interactions dynamiques côté client sans rechar
 | Champ | Information |
 |---|---|
 | Intitulé | Projet FloraShop — application e-commerce pour Pivoine & Lilas |
-| Dates | Mars 2026 |
+| Dates | Juin 2025 |
 | Lieu | Holberton School / Pivoine & Lilas |
 | Activité / service | Développement Web — base de données et modélisation |
 
@@ -266,7 +266,7 @@ L'application FloraShop devait stocker les utilisateurs, le catalogue de produit
 | Champ | Information |
 |---|---|
 | Intitulé | Projet FloraShop — application e-commerce pour Pivoine & Lilas |
-| Dates | Mars 2026 |
+| Dates | Juin 2025 |
 | Lieu | Holberton School / Pivoine & Lilas |
 | Activité / service | Développement Web — couche d'accès aux données |
 
@@ -324,7 +324,7 @@ Ce point d'entrée unique simplifie l'accès aux données depuis les contrôleur
 | Champ | Information |
 |---|---|
 | Intitulé | Projet FloraShop — application e-commerce pour Pivoine & Lilas |
-| Dates | Mars 2026 |
+| Dates | Juin 2025 |
 | Lieu | Holberton School / Pivoine & Lilas |
 | Activité / service | Développement Web — logique métier et API serveur |
 
@@ -417,60 +417,3 @@ Signature :
 | 10 | Capture Swagger UI (desktop et mobile) | Captures d'écran | CP6 |
 | 11 | Tableau des 12 failles de sécurité identifiées (F1-F12) | Audit sécurité | CP3, CP6 |
 | 12 | Jeux d'essai — 7 tests unitaires et d'intégration (résultats) | Tests | CP5, CP6 |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-
----
-
-## Conseils de preparation
-
-- Planifier une journee entiere pour completer ce dossier serieusement.
-- Choisir judicieusement les exemples: privilegier la qualite a la quantite.
-- S assurer que les projets GitHub pertinents sont **accessibles le jour J**.
-- Sources complementaires possibles:
-  - Portfolios de fondamentaux Holberton
-  - Stages eventuels
-  - Projets Holberton pertinents (HBnB, Tests, etc.)
-- Une fois termine, exporter en PDF et l envoyer a l equipe campus.
-
----
-
-## Manual Review du Dossier Professionnel
-
-> **Deadline**: S-2 avant le passage du titre RNCP.
-> Tous les points ci-dessous doivent etre respectes pour avoir un DP propre.
-
-### Checklist Manual Review
-
-| # | Point de verification | Statut |
-|---|---|---|
-| 1 | Le dossier professionnel est present | [ ] |
-| 2 | Le DP reprend le template du Ministere du Travail | [ ] |
-| 3 | Le DP comprend des exemples de pratiques professionnelles et/ou projets Holberton/personnels | [ ] |
-| 4 | Le DP comprend des documents illustrant la pratique professionnelle | [ ] |
-| 5 | Ces documents sont bien renseignes dans le tableau (section 7) | [ ] |
-| 6 | Le DP couvre toutes les activites du titre (cf. REAC DWWM: AT1 + AT2) | [ ] |
-| 7 | Chaque exemple comprend une description des taches et conditions de travail (objectifs, realisations, conditions) | [ ] |
-| 8 | Chaque exemple comprend une description des moyens utilises (comment ?) | [ ] |
-| 9 | Chaque exemple comprend une description de la collaboration (avec qui ? comment ? pourquoi ?) | [ ] |
-| 10 | Chaque exemple explique le contexte | [ ] |
-| 11 | S il y a une attestation de formation, tous les champs sont bien completes | [ ] |
-| 12 | Identite du candidat completee (section 1) | [ ] |
-| 7 | Parcours du candidat renseigne - formation + experience (section 2) | [ ] |
-| 8 | AT1 CP1 - Au moins 1 exemple de pratique professionnelle | [ ] |
-| 9 | AT1 CP2 - Au moins 1 exemple de pratique professionnelle | [ ] |
-| 10 | AT1 CP3 - Au moins 1 exemple de pratique professionnelle | [ ] |
-| 11 | AT2 CP4 - Au moins 1 exemple de pratique professionnelle | [ ] |
-| 12 | AT2 CP5 - Au moins 1 exemple de pratique professionnelle | [ ] |
-| 13 | AT2 CP6 - Au moins 1 exemple de pratique professionnelle | [ ] |
-| 14 | Titres / diplomes anterieurs renseignes (section 5) | [ ] |
-| 15 | Declaration sur l honneur completee et signee (section 6) | [ ] |
-| 16 | Dossier exporte en PDF | [ ] |
-| 17 | PDF envoye a l equipe campus | [ ] |
-
-### Statut Manual Review
-
-- Date de soumission prevue: (a completer - S-2 avant passage)
-- Valideur: equipe campus
-- Statut: En attente

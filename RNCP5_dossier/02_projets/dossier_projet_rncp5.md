@@ -19,7 +19,9 @@
 
 Je tiens a remercier l ensemble de l equipe pedagogique de Holberton School pour leur accompagnement tout au long de cette formation. Leurs conseils techniques et methodologiques m ont permis de progresser et de mener ce projet a bien.
 
-Je remercie egalement Pivoine & Lilas pour leur confiance dans la realisation de cette application e-commerce, ainsi que pour leur disponibilite lors de la definition du cahier des charges et des echanges sur les besoins fonctionnels.
+Je remercie tout particulierement la mere de Mattieu Mourroux, gerante de Pivoine & Lilas, pour sa confiance dans la realisation de cette application e-commerce. Ce projet est ne de la volonte d aider son entreprise a developper son activite d artisan fleuriste en lui offrant une presence en ligne professionnelle. Sa disponibilite lors de la definition du cahier des charges et ses retours sur les besoins fonctionnels ont ete essentiels a la reussite du projet.
+
+Merci a Mattieu Mourroux, ami et co-developpeur sur ce projet, pour sa collaboration precieuse tout au long du developpement.
 
 Merci a mes camarades de promotion pour les echanges constructifs, le partage de connaissances et l entraide qui ont contribue a enrichir mon apprentissage.
 
@@ -102,7 +104,7 @@ Le projet couvre l ensemble des competences du referentiel DWWM : maquettage d i
 
 ### Presentation de l entreprise et du service
 
-Le projet FloraShop a ete realise dans le cadre de la formation Developpeur Web et Web Mobile (DWWM) a Holberton School pour le compte de l entreprise **Pivoine & Lilas**, artisan fleuriste. Il s agit de la conception et du developpement d une application e-commerce complete permettant a l entreprise de vendre ses produits en ligne.
+Le projet FloraShop a ete realise dans le cadre de la formation Developpeur Web et Web Mobile (DWWM) a Holberton School pour le compte de l entreprise **Pivoine & Lilas**, artisan fleuriste geree par la mere de Mattieu Mourroux. Ce projet est ne d une demarche solidaire : aider la mere d un ami et co-developpeur a developper son activite en lui concevant une boutique en ligne professionnelle. Il s agit de la conception et du developpement d une application e-commerce complete permettant a l entreprise de vendre ses produits en ligne.
 
 L activite de Pivoine & Lilas comprend :
 - La vente de fleurs fraiches et compositions florales
@@ -155,7 +157,8 @@ L activite de Pivoine & Lilas comprend :
 
 **Equipe / collaborateurs:**
 
-- Developpeur principal : Jaille Dimitri
+- Developpeur : Jaille Dimitri
+- Developpeur : Mattieu Mourroux
 - Commanditaire : Pivoine & Lilas (artisan fleuriste)
 - Encadrement : Equipe pedagogique Holberton School
 

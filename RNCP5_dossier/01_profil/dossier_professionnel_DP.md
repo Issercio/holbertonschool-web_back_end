@@ -9,23 +9,24 @@
 > Le DP est complété par un livret d'évaluation (équipe campus) et les relevés de scores Holberton.
 > **But** : document support pour l'entretien final avec le jury.
 
----
+### Présentation du dossier
 
+Ce dossier professionnel présente mon parcours, mes compétences et mes réalisations dans le cadre de la certification RNCP Développeur Web et Web Mobile. Il regroupe :
+- Mon identité et mon parcours
+- Les compétences développées
+- Les expériences professionnelles et projets réalisés
+- Les annexes illustrant la pratique professionnelle
+
+L’objectif est de démontrer l’adéquation de mon profil avec les exigences du titre visé.
+---
 ## Sommaire
 
 1. Identité du candidat
 2. Présentation du parcours du candidat
 3. Activité type 1 — Développer la partie front-end d'une application web ou web mobile sécurisée
-   - CP1 — Maquetter des interfaces utilisateur web ou web mobile
-   - CP2 — Réaliser des interfaces utilisateur statiques web ou web mobile
-   - CP3 — Développer la partie dynamique des interfaces utilisateur web ou web mobile
 4. Activité type 2 — Développer la partie back-end d'une application web ou web mobile sécurisée
-   - CP4 — Mettre en place une base de données relationnelle
-   - CP5 — Développer des composants d'accès aux données SQL et NoSQL
-   - CP6 — Développer des composants métier côté serveur
-5. Titres, diplômes, CCP obtenus antérieurement
-6. Déclaration sur l'honneur
-7. Documents annexes illustrant la pratique professionnelle
+5. Déclaration sur l'honneur
+6. Documents annexes illustrant la pratique professionnelle
 
 ---
 
@@ -36,12 +37,12 @@
 | Nom de naissance | JAILLE |
 | Nom d'usage | JAILLE |
 | Premier prénom | Dimitri |
-| Date de naissance | *(à compléter)* |
-| Lieu de naissance | *(à compléter)* |
-| Adresse | *(à compléter)* |
-| Code postal / Ville | *(à compléter)* |
-| Téléphone | *(à compléter)* |
-| Courriel | *(à compléter)* |
+| Date de naissance | 1er Décembre 2003|
+| Lieu de naissance | Marseille |
+| Adresse | 80 Avenue de corzent |
+| Code postal / Ville | 74200 Thonon-les-Bains |
+| Téléphone | 06 51 32 57 58 |
+| Courriel | didi_1374@outlook.fr |
 
 ---
 
@@ -381,27 +382,19 @@ Le back-end de FloraShop expose une API REST documentée via Swagger (OpenAPI 3.
 
 ---
 
-## 5. Titres, diplômes, CCP obtenus antérieurement
-
-| Intitulé du titre, diplôme ou CCP | Date d'obtention | Organisme certificateur |
-|---|---|---|
-| *(à compléter le cas échéant)* | | |
-
----
-
-## 6. Déclaration sur l'honneur
+## 5. Déclaration sur l'honneur
 
 Je soussigné **Jaille Dimitri** déclare sur l'honneur que les renseignements fournis dans ce dossier professionnel sont exacts et que je suis le seul auteur des réalisations jointes, à l'exception des contributions réalisées en binôme avec Mattieu Mourroux dans le cadre du projet FloraShop.
 
 Je m'engage à me présenter aux épreuves de validation du titre professionnel **Développeur Web et Web Mobile** (RNCP 37674).
 
-Fait à : ______________________
-Le : ______________________
+Fait à : Thonon-les-Bains
+Le : 17/03/2026 a 20H
 Signature :
 
 ---
 
-## 7. Documents annexes illustrant la pratique professionnelle
+## 6. Documents annexes illustrant la pratique professionnelle
 
 | N° | Intitulé du document | Nature | CP concernée |
 |---|---|---|---|

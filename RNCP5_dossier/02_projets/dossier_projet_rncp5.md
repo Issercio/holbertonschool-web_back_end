@@ -1,17 +1,18 @@
+
 # Dossier Projet - RNCP 5
 
-## Titre professionnel: Développeur Web et Web Mobile (DWWM)
+## Titre professionnel : Développeur Web et Web Mobile (DWWM)
 
 ---
 
 ## Page de garde
 
-- **Titre du projet**: FloraShop — Pivoine & Lilas, Application e-commerce pour artisan fleuriste
-- **Nom et prénom du candidat**: Jaille Dimitri
-- **Date**: Juin 2025
-- **Titre professionnel visé**: Développeur Web et Web Mobile (DWWM) - RNCP Niveau 5 
-- **Organisme de formation**: Holberton School
-- **Session**: 2025-2026
+- **Titre du projet** : FloraShop — Pivoine & Lilas, Application e-commerce pour artisan fleuriste
+- **Nom et prénom du candidat** : Jaille Dimitri
+- **Date** : Juin 2025
+- **Titre professionnel visé** : Développeur Web et Web Mobile (DWWM) - RNCP Niveau 5
+- **Organisme de formation** : Holberton School
+- **Session** : 2025-2026
 
 ![Logo Holberton School](screenshots/holberton_logo.png){ width=80px }
 
@@ -33,15 +34,31 @@ Enfin, je remercie mes proches pour leur soutien et leurs encouragements constan
 
 ---
 
-## Résumé du projet
+## Introduction et Contexte
 
-FloraShop est une application web e-commerce full-stack développée pour Pivoine & Lilas, artisan fleuriste. Le projet consiste en la conception et la réalisation d'une boutique en ligne permettant la vente de fleurs fraîches, compositions florales, vases, parfums, plantes d'intérieur, accessoires et coffrets cadeaux.
+Le projet FloraShop — Pivoine & Lilas s’inscrit dans une démarche de digitalisation d’une entreprise artisanale. L’objectif principal était de concevoir une solution e-commerce adaptée aux besoins spécifiques d’un fleuriste indépendant, en tenant compte de ses contraintes métier et de ses attentes en matière d’expérience utilisateur.
 
-L'application offre une expérience utilisateur complète : catalogue de produits avec filtres par catégories et recherche, panier d'achat dynamique, paiement sécurisé via Stripe, gestion de comptes utilisateurs avec authentification JWT, et un tableau de bord d'administration pour la gestion des produits, catégories et utilisateurs.
+### Analyse du besoin
 
-Côté front-end, l'interface est responsive et construite avec HTML5, CSS3 (design vintage aux couleurs de la marque #bc6288) et JavaScript vanilla. Côté back-end, l'application repose sur Python Flask avec une architecture REST API documentée via Swagger (Flask-RESTX), une base de données PostgreSQL gérée par SQLAlchemy ORM avec migrations Alembic, et une intégration de paiement Stripe complète (Payment Intents + webhooks).
+L’entreprise Pivoine & Lilas, gérée par une artisane passionnée, souhaitait élargir sa clientèle et faciliter la gestion de ses ventes grâce à une boutique en ligne. Après plusieurs entretiens, il est apparu que la solution devait :
+- Permettre la mise en avant de créations florales uniques, avec des visuels attractifs
+- Offrir un parcours d’achat simple, rapide et sécurisé
+- Intégrer un système de gestion des stocks et des commandes adapté à une petite structure
+- Être administrable sans compétences techniques avancées
 
-Le projet couvre l'ensemble des compétences du référentiel DWWM : maquettage d'interfaces, réalisation d'interfaces statiques et dynamiques responsives, mise en place d'une base de données relationnelle, développement de composants d'accès aux données et de composants métier côté serveur, le tout avec une approche sécurisée (hashage de mots de passe, JWT, validation des entrées, vérification de signatures webhooks).
+### Choix techniques et argumentation
+
+Le choix de technologies s’est porté sur :
+- **Front-end** : HTML5, CSS3, JavaScript vanilla pour garantir la légèreté, la rapidité et la personnalisation du design, tout en assurant la compatibilité multi-supports.
+- **Back-end** : Python Flask, pour sa simplicité, sa robustesse et la facilité d’intégration avec des outils comme Stripe et PostgreSQL.
+- **Base de données** : PostgreSQL, pour sa fiabilité et sa gestion avancée des transactions.
+- **Sécurité** : Authentification JWT, hashage des mots de passe, validation des entrées, afin de protéger les données sensibles des utilisateurs.
+
+Chaque choix a été motivé par la volonté de répondre précisément aux besoins du client, tout en respectant les bonnes pratiques du développement web moderne.
+
+### Démarche de développement
+
+Le projet a été mené en suivant une méthodologie agile : itérations courtes, retours réguliers du client, ajustements progressifs. Cette approche a permis d’identifier rapidement les points d’amélioration et d’adapter la solution en fonction des retours d’utilisation.
 
 ---
 
@@ -49,21 +66,21 @@ Le projet couvre l'ensemble des compétences du référentiel DWWM : maquettage 
 
 1. [Liste des compétences du référentiel couvertes par le projet](#liste-des-compétences-du-référentiel-couvertes-par-le-projet)
 2. [Contexte du projet](#contexte-du-projet)
-   - 2.1 [Type de cahier des charges](#type-de-cahier-des-charges)
-   - 2.2 [Présentation de l'entreprise et du service](#présentation-de-l-entreprise-et-du-service)
-   - 2.3 [Cahier des charges / Expression des besoins](#cahier-des-charges--expression-des-besoins)
-   - 2.4 [Contraintes du projet et livrables attendus](#contraintes-du-projet-et-livrables-attendus)
-   - 2.5 [Environnement humain, technique et objectifs de qualité](#environnement-humain-technique-et-objectifs-de-qualité)
+    - 2.1 [Type de cahier des charges](#type-de-cahier-des-charges)
+    - 2.2 [Présentation de l'entreprise et du service](#présentation-de-l-entreprise-et-du-service)
+    - 2.3 [Cahier des charges / Expression des besoins](#cahier-des-charges--expression-des-besoins)
+    - 2.4 [Contraintes du projet et livrables attendus](#contraintes-du-projet-et-livrables-attendus)
+    - 2.5 [Environnement humain, technique et objectifs de qualité](#environnement-humain-technique-et-objectifs-de-qualité)
 3. [Éléments significatifs côté front-end](#éléments-significatifs-côté-front-end)
 4. [Éléments significatifs côté back-end](#éléments-significatifs-côté-back-end)
 5. [Conclusion](#conclusion)
 6. [Bibliographie](#bibliographie)
 7. [Annexes](#annexes)
-   - 7.1 Swagger UI (documentation API)
-   - 7.2 Données initiales
-   - 7.3 Historique des migrations
-   - 7.4 Glossaire technique
-   - 7.5 Structure du projet
+    - 7.1 Swagger UI (documentation API)
+    - 7.2 Données initiales
+    - 7.3 Historique des migrations
+    - 7.4 Glossaire technique
+    - 7.5 Structure du projet
 
 ---
 

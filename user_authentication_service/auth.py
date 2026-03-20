@@ -1,15 +1,13 @@
 """Authentication service utilities."""
 
 import bcrypt
+from db import DB
+from sqlalchemy.orm.exc import NoResultFound
 
 
 def _hash_password(password: str) -> bytes:
     """Return a salted hash of the input password using bcrypt."""
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-
-from db import DB
-from sqlalchemy.orm.exc import NoResultFound
 
 
 class Auth:

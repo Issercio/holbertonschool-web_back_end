@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
 """Authentication service utilities.
 
-This module provides authentication helpers for user management, including password hashing and user registration.
+This module provides authentication helpers for user management.
+It includes password hashing and user registration.
 """
 
 import bcrypt

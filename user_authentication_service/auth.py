@@ -54,7 +54,7 @@ class Auth:
             )
         except NoResultFound:
             hashed = _hash_password(password)
-            return self._db.add_user(email, hashed)
+            return self._db.add_user(email, hashed.decode('utf-8'))
 
     def valid_login(self, email: str, password: str) -> bool:
         """Validate user credentials.

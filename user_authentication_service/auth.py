@@ -1,3 +1,7 @@
+import uuid
+def _generate_uuid() -> str:
+    """Return a string representation of a new UUID."""
+    return str(uuid.uuid4())
 #!/usr/bin/env python3
 """Provide authentication helpers for password handling."""
 

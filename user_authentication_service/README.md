@@ -1,5 +1,4 @@
 # User Authentication Service
-
 This project implements a basic authentication service using Python, Flask, and SQLAlchemy.
 
 ## Features

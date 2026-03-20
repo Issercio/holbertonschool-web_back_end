@@ -30,3 +30,18 @@ def users() -> Response:
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
+    @app.route("/sessions", methods=["POST"])
+    def login() -> Response:
+        """Log in a user, create session, set session_id cookie, or abort 401."""
+        email = request.form.get("email")
+        password = request.form.get("password")
+        if not email or not password:
+            return jsonify({"message": "missing email or password"}), 400
+        if not AUTH.valid_login(email, password):
+            from flask import abort
+            abort(401)
+        session_id = AUTH.create_session(email)
+        resp = jsonify({"email": email, "message": "logged in"})
+        resp.set_cookie("session_id", session_id)
+        return resp

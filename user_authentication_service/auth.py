@@ -6,6 +6,7 @@ It includes password hashing and user registration.
 """
 
 import bcrypt
+import uuid
 
 from db import DB
 from sqlalchemy.orm.exc import NoResultFound
@@ -22,6 +23,15 @@ def _hash_password(password: str) -> bytes:
         bytes: The salted hash of the password.
     """
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+
+def _generate_uuid() -> str:
+    """Generate a new UUID and return its string representation.
+
+    Returns:
+        str: The string representation of a new UUID.
+    """
+    return str(uuid.uuid4())
 
 
 class Auth:

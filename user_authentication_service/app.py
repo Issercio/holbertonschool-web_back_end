@@ -1,17 +1,32 @@
 #!/usr/bin/env python3
 """This module starts a basic Flask app for the authentication service.
 
-It provides a single route that returns a welcome message in JSON format.
+It provides a single route that returns a welcome message in JSON format and allows user registration.
 """
 
-from flask import Flask, jsonify, Response
+from flask import Flask, jsonify, Response, request
+from auth import Auth
 
 app = Flask(__name__)
+AUTH = Auth()
 
 @app.route("/", methods=["GET"])
 def welcome() -> Response:
     """Return a JSON response with a welcome message for the user."""
     return jsonify({"message": "Bienvenue"})
+
+@app.route("/users", methods=["POST"])
+def users() -> Response:
+    """Register a new user or return error if already registered."""
+    email = request.form.get("email")
+    password = request.form.get("password")
+    if not email or not password:
+        return jsonify({"message": "missing email or password"}), 400
+    try:
+        AUTH.register_user(email, password)
+        return jsonify({"email": email, "message": "user created"})
+    except ValueError:
+        return jsonify({"message": "email already registered"}), 400
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

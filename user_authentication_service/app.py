@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Basic Flask app for authentication service.
+"""This module starts a basic Flask app for the authentication service.
 
-This module sets up a simple Flask application with a welcome route.
+It provides a single route that returns a welcome message in JSON format.
 """
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, Response
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
-def welcome() -> 'flask.Response':
-    """Return a welcome message as JSON."""
+def welcome() -> Response:
+    """Return a JSON response with a welcome message for the user."""
     return jsonify({"message": "Bienvenue"})
 
 if __name__ == "__main__":

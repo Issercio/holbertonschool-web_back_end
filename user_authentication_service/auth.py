@@ -39,22 +39,6 @@ class Auth:
     Provides methods for user registration and authentication.
     """
 
-    def get_user_from_session_id(self, session_id: str) -> User:
-        """Return the User associated with the given session_id, or None if not found or session_id is None.
-
-        Args:
-            session_id (str): The session ID to search for.
-
-        Returns:
-            User: The user associated with the session_id, or None if not found.
-        """
-        if session_id is None:
-            return None
-        try:
-            return self._db.find_user_by(session_id=session_id)
-        except Exception:
-            return None
-
     def __init__(self) -> None:
         """Initialize the Auth class and set up the database handler."""
         self._db = DB()
@@ -113,3 +97,33 @@ class Auth:
             return session_id
         except Exception:
             return None
+
+    def get_user_from_session_id(self, session_id: str) -> User:
+        """Return the User associated with the given session_id, or None if not found or session_id is None.
+
+        Args:
+            session_id (str): The session ID to search for.
+
+        Returns:
+            User: The user associated with the session_id, or None if not found.
+        """
+        if session_id is None:
+            return None
+        try:
+            return self._db.find_user_by(session_id=session_id)
+        except Exception:
+            return None
+
+    def destroy_session(self, user_id: int) -> None:
+        """Destroy the session for the user by setting session_id to None.
+
+        Args:
+            user_id (int): The ID of the user whose session should be destroyed.
+
+        Returns:
+            None
+        """
+        try:
+            self._db.update_user(user_id, session_id=None)
+        except Exception:
+            pass

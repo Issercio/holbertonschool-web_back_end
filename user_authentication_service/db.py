@@ -34,9 +34,20 @@ class DB:
         return user
 
     def find_user_by(self, **kwargs) -> User:
-        """Return the first user matching the provided query arguments."""
-        user = self._session.query(User).filter_by(**kwargs).one()
-        return user
+        """Return the first user matching the provided query arguments.
+        Raises NoResultFound if no user is found.
+        Raises InvalidRequestError if invalid query arguments are passed.
+        """
+        try:
+            user = self._session.query(User).filter_by(**kwargs).one()
+            return user
+        except NoResultFound:
+            raise
+        except Exception as e:
+            from sqlalchemy.exc import InvalidRequestError
+            if isinstance(e, InvalidRequestError):
+                raise
+            raise
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """Update attributes of a user identified by user_id."""

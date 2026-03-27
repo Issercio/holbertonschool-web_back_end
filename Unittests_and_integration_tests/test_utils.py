@@ -18,7 +18,7 @@ class TestGetJson(unittest.TestCase):
     def test_get_json(self, test_url: str, test_payload: dict) -> None:
         """Test get_json returns expected payload and calls requests.get once."""
         with patch(
-                "Unittests_and_integration_tests.utils.requests.get"
+            "Unittests_and_integration_tests.utils.requests.get"
         ) as mock_get:
             mock_response = Mock()
             mock_response.json.return_value = test_payload

@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
-# Unit tests for utils module.
-# This module contains test cases for the access_nested_map function.
+"""
+Unit tests for the utils module.
+
+This module contains comprehensive test cases for the following utility functions:
+- access_nested_map
+- get_json
+- memoize
+"""
 import unittest
 from parameterized import parameterized
 from unittest.mock import patch, Mock

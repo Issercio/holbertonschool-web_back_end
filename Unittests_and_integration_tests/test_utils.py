@@ -5,7 +5,7 @@ import unittest
 from parameterized import parameterized
 from unittest.mock import patch, Mock
 
-from .utils import access_nested_map, memoize
+from utils import access_nested_map, memoize
 
 
 class TestGetJson(unittest.TestCase):

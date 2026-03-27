@@ -52,8 +52,8 @@ def _run_get_json_test(test_url, test_payload):
     Helper function to test get_json utility.
 
     Mocks the requests.get call and asserts that get_json returns the expected
-    payload for the given test_url. Used to avoid indentation-related line length
-    issues in the main test method.
+    payload for the given test_url. Used to avoid indentation-related line
+    length issues in the main test method.
     Args:
         test_url (str): The URL to fetch JSON from.
         test_payload (dict): The expected JSON payload.
@@ -67,7 +67,9 @@ def _run_get_json_test(test_url, test_payload):
         PATCH_TARGET,
         **patch_kwargs
     ) as mock_get:
-        result = access_nested_map.__globals__["get_json"](test_url)
+        result = access_nested_map.__globals__["get_json"](
+            test_url
+        )
     mock_get.assert_called_once_with(test_url)
     assert result == test_payload
 

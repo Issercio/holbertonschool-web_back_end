@@ -17,7 +17,7 @@ class TestGetJson(unittest.TestCase):
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
-    ])
+    ], name_func=lambda f, n, p: f"test_get_json_{n}")
     def test_get_json(self, test_url, test_payload):
         """Test that get_json returns the expected payload and requests.get is called correctly."""
         with patch("utils.requests.get") as mock_get:

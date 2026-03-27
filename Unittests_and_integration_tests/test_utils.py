@@ -4,12 +4,11 @@
 """Unit tests for utils and client modules."""
 import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 import unittest
 from parameterized import parameterized
 from unittest.mock import patch, Mock
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 from utils import access_nested_map, get_json, memoize
-
 
 
 class TestMemoize(unittest.TestCase):
@@ -31,6 +30,7 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
             mock_method.assert_called_once()
+
 
 
 
@@ -59,6 +59,7 @@ class TestGetJson(unittest.TestCase):
 
 
 
+
 class TestAccessNestedMap(unittest.TestCase):
     """Test case for access_nested_map function. This class tests that
     access_nested_map returns the expected value for various nested dictionaries
@@ -78,9 +79,9 @@ class TestAccessNestedMap(unittest.TestCase):
         self.assertEqual(str(cm.exception), f"'{expected_key}'")
 
     @parameterized.expand([
-        ( {"a": 1}, ("a",), 1),
-        ( {"a": {"b": 2}}, ("a",), {"b": 2}),
-        ( {"a": {"b": 2}}, ("a", "b"), 2),
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), {"b": 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
     def test_access_nested_map(self, nested_map, path, expected):
         """Test that access_nested_map returns the expected value for a given

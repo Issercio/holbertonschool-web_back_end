@@ -36,7 +36,8 @@ class TestAccessNestedMap(unittest.TestCase):
     """
     @parameterized.expand([
         ("{} and ('a',)", {}, ('a',), 'a'),
-        ("{'a': 1} and ('a', 'b')", {'a': 1}, ('a', 'b'), 'b'),
+        ("{'a': 1} and ('a', 'b')",
+         {'a': 1}, ('a', 'b'), 'b'),
     ])
     def test_access_nested_map_exception(self, name: str, nested_map: dict,
                                          path: tuple, expected_key: str) -> None:
@@ -53,7 +54,8 @@ class TestAccessNestedMap(unittest.TestCase):
 
     @parameterized.expand([
         ("{'a': 1}, ('a',)", {'a': 1}, ('a',), 1),
-        ("{'a': {'b': 2}}, ('a',)", {'a': {'b': 2}}, ('a',), {'b': 2}),
+        ("{'a': {'b': 2}}, ('a',)",
+         {'a': {'b': 2}}, ('a',), {'b': 2}),
         ("{'a': {'b': 2}}, ('a', 'b')",
          {'a': {'b': 2}}, ('a', 'b'), 2),
     ])
@@ -92,6 +94,3 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
             mock_method.assert_called_once()
-
-
-

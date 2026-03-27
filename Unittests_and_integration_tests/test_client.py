@@ -52,11 +52,12 @@ class TestGithubOrgClient(unittest.TestCase):
                 result,
                 test_payload["repos_url"]
             )
+
     @patch("client.get_json")
     def test_public_repos(self, mock_get_json):
         """
-        Test that GithubOrgClient.public_repos returns the expected list of repos,
-        and that _public_repos_url and get_json are called once.
+        Test that GithubOrgClient.public_repos returns the expected list of
+        repos, and that _public_repos_url and get_json are called once.
         """
         test_repos_payload = [
             {"name": "repo1"},

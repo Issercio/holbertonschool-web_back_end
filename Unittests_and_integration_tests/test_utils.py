@@ -17,9 +17,13 @@ class TestGetJson(unittest.TestCase):
     ])
     def test_get_json(self, test_url: str, test_payload: dict) -> None:
         """Test get_json returns expected payload and calls requests.get once."""
-        with patch(
-            "Unittests_and_integration_tests.utils.requests.get"
-        ) as mock_get:
+        patch_target = (
+            "Unittests-"
+            "and_integration_"
+            "tests.utils."
+            "requests.get"
+        )
+        with patch(patch_target) as mock_get:
             mock_response = Mock()
             mock_response.json.return_value = test_payload
             mock_get.return_value = mock_response
@@ -36,11 +40,24 @@ class TestAccessNestedMap(unittest.TestCase):
     """
     @parameterized.expand([
         ("{} and ('a',)", {}, ('a',), 'a'),
-        ("{'a': 1} and ('a', 'b')",
-         {'a': 1}, ('a', 'b'), 'b'),
+        ("{'a': 1} and ('a', 'b')"
+         "",
+         {
+             'a': 1
+         },
+         (
+             'a',
+             'b'
+         ),
+         'b'),
     ])
-    def test_access_nested_map_exception(self, name: str, nested_map: dict,
-                                         path: tuple, expected_key: str) -> None:
+    def test_access_nested_map_exception(
+        self,
+        name: str,
+        nested_map: dict,
+        path: tuple,
+        expected_key: str
+    ) -> None:
         """Test access_nested_map raises KeyError with correct message.
         Args:
             name (str): Description of the test case.
@@ -49,15 +66,42 @@ class TestAccessNestedMap(unittest.TestCase):
             expected_key (str): The key expected in the KeyError message.
         """
         with self.assertRaises(KeyError) as cm:
-            access_nested_map(nested_map, path)
-        self.assertEqual(str(cm.exception), f"'{expected_key}'")
+            access_nested_map(
+                nested_map,
+                path
+            )
+        self.assertEqual(
+            str(cm.exception),
+            f"'{expected_key}'"
+        )
 
     @parameterized.expand([
         ("{'a': 1}, ('a',)", {'a': 1}, ('a',), 1),
-        ("{'a': {'b': 2}}, ('a',)",
-         {'a': {'b': 2}}, ('a',), {'b': 2}),
-        ("{'a': {'b': 2}}, ('a', 'b')",
-         {'a': {'b': 2}}, ('a', 'b'), 2),
+        ("{'a': {'b': 2}}, ('a',)"
+         "",
+         {
+             'a': {
+                 'b': 2
+             }
+         },
+         (
+             'a',
+         ),
+         {
+             'b': 2
+         }),
+        ("{'a': {'b': 2}}, ('a', 'b')"
+         "",
+         {
+             'a': {
+                 'b': 2
+             }
+         },
+         (
+             'a',
+             'b'
+         ),
+         2),
     ])
     def test_access_nested_map(self, name: str, nested_map: dict,
                                path: tuple, expected: object) -> None:
@@ -69,16 +113,20 @@ class TestAccessNestedMap(unittest.TestCase):
             expected (object): The expected value from the nested map.
         """
         self.assertEqual(
-            access_nested_map(nested_map, path), expected
+            access_nested_map(
+                nested_map,
+                path
+            ),
+            expected
         )
-
 
 
 class TestMemoize(unittest.TestCase):
     """TestCase for memoize decorator."""
 
     def test_memoize(self):
-        """Test that memoize caches the result and calls the method only once."""
+        """Test that memoize caches the result and
+        calls the method only once."""
         class TestClass:
             def a_method(self):
                 return 42
@@ -87,10 +135,20 @@ class TestMemoize(unittest.TestCase):
             def a_property(self):
                 return self.a_method()
 
-        with patch.object(TestClass, "a_method", return_value=42) as mock_method:
+        with patch.object(
+            TestClass,
+            "a_method",
+            return_value=42
+        ) as mock_method:
             obj = TestClass()
             result1 = obj.a_property
             result2 = obj.a_property
-            self.assertEqual(result1, 42)
-            self.assertEqual(result2, 42)
+            self.assertEqual(
+                result1,
+                42
+            )
+            self.assertEqual(
+                result2,
+                42
+            )
             mock_method.assert_called_once()

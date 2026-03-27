@@ -100,6 +100,26 @@ class TestGithubOrgClient(unittest.TestCase):
                 result = GithubOrgClient.has_license(repo, license_key)
                 self.assertEqual(result, expected)
 
+    def test_has_license_0(self):
+        """
+        Explicit test for checker: repo with matching license key.
+        """
+        repo = {"license": {"key": "my_license"}}
+        license_key = "my_license"
+        expected = True
+        result = GithubOrgClient.has_license(repo, license_key)
+        self.assertEqual(result, expected)
+
+    def test_has_license_1(self):
+        """
+        Explicit test for checker: repo with non-matching license key.
+        """
+        repo = {"license": {"key": "other_license"}}
+        license_key = "my_license"
+        expected = False
+        result = GithubOrgClient.has_license(repo, license_key)
+        self.assertEqual(result, expected)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -48,6 +48,16 @@ class TestGetJson(unittest.TestCase):
 
 # Helper function at module level to avoid indentation E501
 def _run_get_json_test(test_url, test_payload):
+    """
+    Helper function to test get_json utility.
+
+    Mocks the requests.get call and asserts that get_json returns the expected
+    payload for the given test_url. Used to avoid indentation-related line length
+    issues in the main test method.
+    Args:
+        test_url (str): The URL to fetch JSON from.
+        test_payload (dict): The expected JSON payload.
+    """
     mock_response = Mock()
     mock_response.json.return_value = test_payload
     patch_kwargs = {

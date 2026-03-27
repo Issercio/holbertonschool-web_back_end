@@ -2,7 +2,8 @@
 """
 Unit tests for the utils module.
 
-This module contains comprehensive test cases for the following utility functions:
+This module contains comprehensive test cases for the following
+utility functions:
 - access_nested_map
 - get_json
 - memoize

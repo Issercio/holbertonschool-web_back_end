@@ -43,7 +43,7 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch.object(
             GithubOrgClient,
             "org",
-            new_callable=property
+            new_callable=PropertyMock
         ) as mock_org:
             mock_org.return_value = test_payload
             client = GithubOrgClient("testorg")

@@ -1,3 +1,22 @@
+from unittest.mock import patch, Mock
+from utils import get_json
+
+class TestGetJson(unittest.TestCase):
+    """Test case for get_json function. This class tests that get_json returns the expected payload and does not make real HTTP calls."""
+
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False}),
+    ])
+    def test_get_json(self, test_url, test_payload):
+        """Test that get_json returns the expected payload and requests.get is called correctly."""
+        with patch("utils.requests.get") as mock_get:
+            mock_response = Mock()
+            mock_response.json.return_value = test_payload
+            mock_get.return_value = mock_response
+            result = get_json(test_url)
+            mock_get.assert_called_once_with(test_url)
+            self.assertEqual(result, test_payload)
 #!/usr/bin/env python3
 """Unit tests for utils.access_nested_map"""
 import unittest

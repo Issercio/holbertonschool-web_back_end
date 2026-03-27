@@ -19,6 +19,18 @@ Les tests sont écrits avec `unittest` et `parameterized`.
 python3 -m unittest Unittests_and_integration_tests/test_utils.py
 ```
 
+## Ajout 28/03/2026 :
+
+### Test de la fonction get_json
+
+- Ajout de la classe `TestGetJson` pour tester la fonction utilitaire `get_json`.
+- Les appels HTTP externes sont mockés avec `unittest.mock.patch` pour garantir l'absence de requêtes réelles.
+- Les cas de test vérifient que la fonction retourne bien le payload attendu et que `requests.get` est appelé une seule fois avec la bonne URL.
+
+Exemple de test paramétré :
+- URL : http://example.com, payload : {"payload": True}
+- URL : http://holberton.io, payload : {"payload": False}
+
 ## Dépendances
 
 - `requests`

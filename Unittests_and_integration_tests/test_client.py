@@ -63,6 +63,9 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch.object(GithubOrgClient, "_public_repos_url", new_callable=property) as mock_url:
             mock_url.return_value = test_url
             client = GithubOrgClient("testorg")
+            # Clear the memoization cache to ensure the mock is used
+            if hasattr(client, "_GithubOrgClient__memoized"):  # for memoize decorator
+                client._GithubOrgClient__memoized.clear()
             repos = client.public_repos()
             self.assertEqual(repos, ["repo1", "repo2", "repo3"])
             mock_url.assert_called_once()

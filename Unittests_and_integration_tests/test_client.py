@@ -3,7 +3,7 @@
 Unit tests for the GithubOrgClient class in client.py.
 """
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 
 from client import GithubOrgClient
@@ -60,7 +60,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ]
         mock_get_json.return_value = test_repos_payload
         test_url = "https://api.github.com/orgs/testorg/repos"
-        with patch.object(GithubOrgClient, "_public_repos_url", new_callable=property) as mock_url:
+        with patch.object(GithubOrgClient, "_public_repos_url", new_callable=PropertyMock) as mock_url:
             mock_url.return_value = test_url
             client = GithubOrgClient("testorg")
             # Clear the memoization cache to ensure the mock is used

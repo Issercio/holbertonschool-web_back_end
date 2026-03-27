@@ -2,12 +2,12 @@
 
 #!/usr/bin/env python3
 """Unit tests for utils and client modules."""
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import unittest
 from parameterized import parameterized
 from unittest.mock import patch, Mock
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 from utils import access_nested_map, get_json
 
 
@@ -25,7 +25,6 @@ class TestGetJson(unittest.TestCase):
             mock_response.json.return_value = test_payload
             mock_get.return_value = mock_response
             result = get_json(test_url)
-            print(f"URL: {test_url} | Expected: {test_payload} | Got: {result}")
             mock_get.assert_called_once_with(test_url)
             self.assertEqual(result, test_payload)
 

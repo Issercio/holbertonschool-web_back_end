@@ -1,4 +1,5 @@
 
+
 #!/usr/bin/env python3
 """Unit tests for utils and client modules."""
 import sys
@@ -9,8 +10,11 @@ from unittest.mock import patch, Mock
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 from utils import access_nested_map, get_json, memoize
 
+
+
 class TestMemoize(unittest.TestCase):
     """Test case for the memoize decorator."""
+
     def test_memoize(self):
         class TestClass:
             def a_method(self):
@@ -27,6 +31,8 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
             mock_method.assert_called_once()
+
+
 
 
 class TestGetJson(unittest.TestCase):
@@ -47,6 +53,8 @@ class TestGetJson(unittest.TestCase):
             self.assertEqual(result, test_payload)
 
 
+
+
 class TestAccessNestedMap(unittest.TestCase):
     """Test case for access_nested_map function. This class tests that access_nested_map returns the expected value for various nested dictionaries and paths."""
 
@@ -61,9 +69,9 @@ class TestAccessNestedMap(unittest.TestCase):
         self.assertEqual(str(cm.exception), f"'{expected_key}'")
 
     @parameterized.expand([
-        ( {"a": 1}, ("a",), 1),
-        ( {"a": {"b": 2}}, ("a",), {"b": 2}),
-        ( {"a": {"b": 2}}, ("a", "b"), 2),
+        ("a", 1),
+        ("a", {"b": 2}),
+        ("a", "b", 2),
     ])
     def test_access_nested_map(self, nested_map, path, expected):
         """Test that access_nested_map returns the expected value for a given path."""

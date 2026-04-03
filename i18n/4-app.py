@@ -10,6 +10,12 @@ It is used to mark strings for translation in the application and templates.
 """
 
 class Config:
+    """
+    Config class for Flask app internationalization settings.
+    LANGUAGES: Supported languages for the app.
+    BABEL_DEFAULT_LOCALE: Default locale for Babel.
+    BABEL_DEFAULT_TIMEZONE: Default timezone for Babel.
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"

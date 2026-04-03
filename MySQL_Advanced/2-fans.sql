@@ -1,5 +1,6 @@
 -- 2. Best band ever!
 -- Ranks country origins of bands by the number of (non-unique) fans
+-- Rank country origins by total number of fans
 SELECT origin, SUM(nb_fans) AS nb_fans
 FROM metal_bands
 GROUP BY origin

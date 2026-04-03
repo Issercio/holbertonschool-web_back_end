@@ -1,15 +1,19 @@
 def call_history(method: Callable) -> Callable:
     """
-    Decorator to store the history of inputs and outputs for a method in Redis lists.
-    Stores input arguments in <method:inputs> and outputs in <method:outputs> lists.
+    Decorator that stores the history of inputs and outputs for a method in Redis lists.
+    Each time the decorated method is called, its input arguments are appended to a Redis list
+    named '<method_name>:inputs', and its output is appended to '<method_name>:outputs'.
+    This allows tracking of all calls and their results for the decorated method.
+    Args:
+        method: The method to decorate.
+    Returns:
+        Callable: The wrapped method with input/output history tracking.
     """
     @functools.wraps(method)
-    def wrapper(self, *args, **kwargs):
+    def wrapper(self, *args, **kwargs) -> Any:
         input_key = f"{method.__qualname__}:inputs"
         output_key = f"{method.__qualname__}:outputs"
-        # Store input arguments as string
         self._redis.rpush(input_key, str(args))
-        # Call the original method and store output
         output = method(self, *args, **kwargs)
         self._redis.rpush(output_key, str(output))
         return output

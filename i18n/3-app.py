@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 """
 Basic Flask app with Babel and template parameterization for i18n.
-This app configures Babel for English and French support and uses translations in templates.
+This app configures Babel for English and French support and uses
+translations in templates.
 """
-from flask import Flask, render_template, request
-from flask_babel import Babel, _
 
-_: callable
-"""
-_ is an alias for the gettext translation function provided by Flask-Babel.
-It is used to mark strings for translation in the application and templates.
-"""
+from flask import Flask, render_template, request
+# _ is an alias for the gettext translation function provided by Flask-Babel.
+# It is used to mark strings for translation in the application and templates.
+from flask_babel import Babel, _
 
 
 class Config:

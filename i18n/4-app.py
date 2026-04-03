@@ -49,7 +49,8 @@ def index():
     """
     Render the index page with a translated welcome message.
     Returns:
-        str: Rendered HTML of the index page with the correct translation for the heading and title.
+        str: Rendered HTML of the index page with the correct translation
+        for the heading and title.
     """
     return render_template(
         "4-index.html",

@@ -1,7 +1,11 @@
--- Rank country origins of bands ordered by the number of (non-unique) fans
-SELECT origin, SUM(fans) AS nb_fans
-FROM metal_bands
-WHERE origin IS NOT NULL
-GROUP BY origin
-ORDER BY nb_fans DESC;
- 
+-- 5. Email validation to sent
+-- Creates a trigger that resets valid_email only when the email has been changed
+DELIMITER //
+CREATE TRIGGER reset_valid_email BEFORE UPDATE ON users
+FOR EACH ROW
+BEGIN
+    IF NOT (NEW.email <=> OLD.email) THEN
+        SET NEW.valid_email = 0;
+    END IF;
+END//
+DELIMITER ;

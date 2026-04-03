@@ -25,11 +25,16 @@ app.config.from_object(Config)
 babel = Babel()
 
 def get_locale():
-    # Check for forced locale in URL parameter
+    """
+    Determines the best locale to use for the current request.
+    - If the 'locale' URL parameter is present and valid, use it.
+    - Otherwise, use the best match from the request's Accept-Language headers.
+    Returns:
+        str: The selected locale ('en' or 'fr').
+    """
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
-    # Fallback to best match from request headers
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 babel.init_app(app, locale_selector=get_locale)

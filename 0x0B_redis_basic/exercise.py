@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """
 Module for Cache class to interact with Redis and store data in a Redis database.
@@ -8,6 +9,7 @@ import redis
 import uuid
 from typing import Union, Callable, Any
 import functools
+
 
 def call_history(method: Callable) -> Callable:
     """
@@ -54,10 +56,6 @@ def replay(method: Callable) -> None:
         output_str = output_bytes.decode('utf-8')
         print(f"{qualname}(*{input_str}) -> {output_str}")
 
-import redis
-import uuid
-from typing import Union, Callable, Any
-import functools
 
 
 def count_calls(method: Callable) -> Callable:

@@ -19,8 +19,6 @@ class Config:
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
-
-
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 users = {
@@ -29,7 +27,6 @@ users = {
     3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
-
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -45,7 +42,6 @@ def get_user():
     try:
         user_id = int(request.args.get('login_as'))
         return users.get(user_id)
-
 
     except (TypeError, ValueError):
         return None

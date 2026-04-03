@@ -3,7 +3,6 @@
 Flask app with Babel, forced locale, and mock login system.
 """
 from flask import Flask, render_template, request, g
-
 from flask_babel import Babel, _
 
 _.__doc__ = """
@@ -31,6 +30,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel()
@@ -47,6 +47,7 @@ def get_user():
         return users.get(user_id)
     except (TypeError, ValueError):
         return None
+
 
 def get_locale():
     """
@@ -69,6 +70,7 @@ def before_request():
     """
     g.user = get_user()
 
+
 babel.init_app(app, locale_selector=get_locale)
 
 
@@ -88,3 +90,5 @@ def index():
 
 if __name__ == "__main__":
     app.run()
+
+

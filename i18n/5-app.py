@@ -19,6 +19,7 @@ class Config:
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
+
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 users = {
@@ -43,6 +44,7 @@ def get_user():
     try:
         user_id = int(request.args.get('login_as'))
         return users.get(user_id)
+
     except (TypeError, ValueError):
         return None
 
@@ -76,7 +78,8 @@ def index():
     """
     Render the index page with a translated welcome message and login status.
     Returns:
-        str: Rendered HTML of the index page with the correct translation for the heading and login status.
+        str: Rendered HTML of the index page with the correct translation
+        for the heading and login status.
     """
     return render_template(
         "5-index.html",

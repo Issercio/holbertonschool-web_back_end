@@ -81,10 +81,13 @@ def index():
         str: Rendered HTML of the index page with the correct translation
         for the heading and login status.
     """
+
     return render_template(
         "5-index.html",
         get_locale=get_locale
+    )
 
 
 if __name__ == "__main__":
     app.run()
+ 

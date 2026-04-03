@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 Module for Cache class to interact with Redis and store data in a Redis database.
@@ -17,8 +16,10 @@ def call_history(method: Callable) -> Callable:
     Each time the decorated method is called, its input arguments are appended to a Redis list
     named '<method_name>:inputs', and its output is appended to '<method_name>:outputs'.
     This allows tracking of all calls and their results for the decorated method.
+
     Args:
         method: The method to decorate.
+
     Returns:
         Callable: The wrapped method with input/output history tracking.
     """
@@ -31,11 +32,14 @@ def call_history(method: Callable) -> Callable:
         self._redis.rpush(output_key, str(output))
         return output
     return wrapper
+
 def replay(method: Callable) -> None:
     """
     Display the history of calls of a particular function, including the number of calls, inputs, and outputs.
+
     Args:
         method: The method whose call history to display.
+
     Prints:
         The number of times the method was called, and the list of inputs and outputs for each call.
     """
@@ -55,8 +59,6 @@ def replay(method: Callable) -> None:
         input_str = input_bytes.decode('utf-8')
         output_str = output_bytes.decode('utf-8')
         print(f"{qualname}(*{input_str}) -> {output_str}")
-
-
 
 def count_calls(method: Callable) -> Callable:
     """
@@ -86,7 +88,6 @@ def count_calls(method: Callable) -> Callable:
         self._redis.incr(key)
         return method(self, *args, **kwargs)
     return wrapper
-
 
 class Cache:
     """

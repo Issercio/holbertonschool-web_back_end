@@ -1,6 +1,6 @@
 def replay(method: Callable) -> None:
     """
-    Display the history of calls of a particular function.
+    Display the history of calls of a particular function, including the number of calls, inputs, and outputs.
 
     Args:
         method: The method whose call history to display.

@@ -41,6 +41,11 @@ babel.init_app(app, locale_selector=get_locale)
 
 @app.route("/")
 def index():
+    """
+    Render the index page with a translated welcome message.
+    Returns:
+        str: Rendered HTML of the index page with the correct translation for the heading and title.
+    """
     return render_template("4-index.html", get_locale=get_locale)
 
 if __name__ == "__main__":

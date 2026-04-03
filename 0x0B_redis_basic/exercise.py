@@ -38,9 +38,16 @@ import functools
 def call_history(method: Callable) -> Callable:
     """
     Decorator that stores the history of inputs and outputs for a method in Redis lists.
+    Each time the decorated method is called, its input arguments are appended to a Redis list
+    named '<method_name>:inputs', and its output is appended to '<method_name>:outputs'.
+    This allows tracking of all calls and their results for the decorated method.
+    Args:
+        method: The method to decorate.
+    Returns:
+        Callable: The wrapped method with input/output history tracking.
     """
     @functools.wraps(method)
-    def wrapper(self, *args, **kwargs):
+    def wrapper(self, *args, **kwargs) -> Any:
         input_key = f"{method.__qualname__}:inputs"
         output_key = f"{method.__qualname__}:outputs"
         self._redis.rpush(input_key, str(args))
@@ -51,6 +58,10 @@ def call_history(method: Callable) -> Callable:
 def replay(method: Callable) -> None:
     """
     Display the history of calls of a particular function, including the number of calls, inputs, and outputs.
+    Args:
+        method: The method whose call history to display.
+    Prints:
+        The number of times the method was called, and the list of inputs and outputs for each call.
     """
     if not hasattr(method, "__self__") or not hasattr(method, "__qualname__"):
         return

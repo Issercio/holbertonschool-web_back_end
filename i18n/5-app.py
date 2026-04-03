@@ -44,9 +44,9 @@ def get_user():
         user_id = int(request.args.get('login_as'))
         return users.get(user_id)
 
+
     except (TypeError, ValueError):
         return None
-
 
 
 @app.before_request

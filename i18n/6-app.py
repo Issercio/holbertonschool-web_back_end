@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Flask app with Babel, forced locale, and mock login system, now using user locale preference.
+Flask app with Babel, forced locale, and mock login system,
+now using user locale preference.
 """
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _

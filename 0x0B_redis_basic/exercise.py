@@ -38,29 +38,9 @@ import functools
 def call_history(method: Callable) -> Callable:
     """
     Decorator that stores the history of inputs and outputs for a method in Redis lists.
-    Each time the decorated method is called, its input arguments are appended to a Redis list
-    named '<method_name>:inputs', and its output is appended to '<method_name>:outputs'.
-    This allows tracking of all calls and their results for the decorated method.
-
-    Args:
-        method: The method to decorate.
-
-    Returns:
-        Callable: The wrapped method with input/output history tracking.
     """
     @functools.wraps(method)
-    def wrapper(self, *args, **kwargs) -> Any:
-        """
-        Wrapper function that pushes input arguments and output to Redis lists.
-
-        Args:
-            self: The instance of the class.
-            *args: Arguments passed to the method.
-            **kwargs: Keyword arguments (ignored for history).
-
-        Returns:
-            Any: The output of the original method.
-        """
+    def wrapper(self, *args, **kwargs):
         input_key = f"{method.__qualname__}:inputs"
         output_key = f"{method.__qualname__}:outputs"
         self._redis.rpush(input_key, str(args))
@@ -68,6 +48,26 @@ def call_history(method: Callable) -> Callable:
         self._redis.rpush(output_key, str(output))
         return output
     return wrapper
+def replay(method: Callable) -> None:
+    """
+    Display the history of calls of a particular function, including the number of calls, inputs, and outputs.
+    """
+    if not hasattr(method, "__self__") or not hasattr(method, "__qualname__"):
+        return
+    redis_client = method.__self__._redis
+    qualname = method.__qualname__
+    inputs = redis_client.lrange(f"{qualname}:inputs", 0, -1)
+    outputs = redis_client.lrange(f"{qualname}:outputs", 0, -1)
+    call_count = redis_client.get(qualname)
+    try:
+        call_count = int(call_count)
+    except (TypeError, ValueError):
+        call_count = 0
+    print(f"{qualname} was called {call_count} times:")
+    for input_bytes, output_bytes in zip(inputs, outputs):
+        input_str = input_bytes.decode('utf-8')
+        output_str = output_bytes.decode('utf-8')
+        print(f"{qualname}(*{input_str}) -> {output_str}")
 
 import redis
 import uuid

@@ -87,8 +87,6 @@ def index():
         get_locale=get_locale
     )
 
-
-
 if __name__ == "__main__":
     app.run()
 

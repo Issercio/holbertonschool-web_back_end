@@ -56,6 +56,7 @@ def before_request():
 
     g.user = get_user()
 
+
 def get_locale():
     """
     Determines the best locale to use for the current request.
@@ -86,8 +87,6 @@ def index():
         "5-index.html",
         get_locale=get_locale
     )
-
-
 
 if __name__ == "__main__":
     app.run()

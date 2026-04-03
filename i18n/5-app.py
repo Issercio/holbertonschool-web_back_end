@@ -42,18 +42,18 @@ def get_user():
     """
     try:
         user_id = int(request.args.get('login_as'))
-        return users.get(user_id)
 
+        return users.get(user_id)
 
     except (TypeError, ValueError):
         return None
-
 
 @app.before_request
 def before_request():
     """
     Executed before each request to set the user in flask.g if logged in.
     """
+
     g.user = get_user()
 
 def get_locale():
@@ -84,7 +84,6 @@ def index():
     return render_template(
         "5-index.html",
         get_locale=get_locale
-    )
 
 
 if __name__ == "__main__":

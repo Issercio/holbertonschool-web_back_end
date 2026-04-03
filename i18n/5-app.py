@@ -19,8 +19,7 @@ class Config:
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
-
-        BABEL_DEFAULT_TIMEZONE = "UTC"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -45,8 +44,7 @@ def get_user():
         user_id = int(request.args.get('login_as'))
         return users.get(user_id)
     except (TypeError, ValueError):
-
-            return None
+        return None
 
 
 @app.before_request
@@ -88,9 +86,3 @@ def index():
 
 if __name__ == "__main__":
     app.run()
-
-
-        return render_template(
-            "5-index.html",
-            get_locale=get_locale
-        )

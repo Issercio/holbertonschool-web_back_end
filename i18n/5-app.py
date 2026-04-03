@@ -9,6 +9,7 @@ _ is an alias for the gettext translation function provided by Flask-Babel.
 It is used to mark strings for translation in the application and templates.
 """
 
+
 class Config:
     """
     Config class for Flask app internationalization settings.
@@ -27,9 +28,11 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel()
+
 
 def get_user():
     """
@@ -42,6 +45,7 @@ def get_user():
         return users.get(user_id)
     except (TypeError, ValueError):
         return None
+
 
 @app.before_request
 def before_request():
@@ -63,7 +67,9 @@ def get_locale():
         return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
 babel.init_app(app, locale_selector=get_locale)
+
 
 @app.route("/")
 def index():
@@ -76,6 +82,7 @@ def index():
         "5-index.html",
         get_locale=get_locale
     )
+
 
 if __name__ == "__main__":
     app.run()

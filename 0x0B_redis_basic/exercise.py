@@ -1,29 +1,3 @@
-def replay(method: Callable) -> None:
-    """
-    Display the history of calls of a particular function, including the number of calls, inputs, and outputs.
-
-    Args:
-        method: The method whose call history to display.
-
-    Prints:
-        The number of times the method was called, and the list of inputs and outputs for each call.
-    """
-    if not hasattr(method, "__self__") or not hasattr(method, "__qualname__"):
-        return
-    redis_client = method.__self__._redis
-    qualname = method.__qualname__
-    inputs = redis_client.lrange(f"{qualname}:inputs", 0, -1)
-    outputs = redis_client.lrange(f"{qualname}:outputs", 0, -1)
-    call_count = redis_client.get(qualname)
-    try:
-        call_count = int(call_count)
-    except (TypeError, ValueError):
-        call_count = 0
-    print(f"{qualname} was called {call_count} times:")
-    for input_bytes, output_bytes in zip(inputs, outputs):
-        input_str = input_bytes.decode('utf-8')
-        output_str = output_bytes.decode('utf-8')
-        print(f"{qualname}(*{input_str}) -> {output_str}")
 #!/usr/bin/env python3
 """
 Module for Cache class to interact with Redis and store data in a Redis database.

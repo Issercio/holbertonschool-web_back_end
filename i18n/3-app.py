@@ -6,6 +6,12 @@ This app configures Babel for English and French support and uses translations i
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
+_: callable
+"""
+_ is an alias for the gettext translation function provided by Flask-Babel.
+It is used to mark strings for translation in the application and templates.
+"""
+
 
 class Config:
     """

@@ -39,7 +39,7 @@ def index() -> str:
     """
     Render the index page with a translated welcome message.
     """
-    return render_template("3-index.html")
+    return render_template("3-index.html", get_locale=get_locale)
 
 
 if __name__ == "__main__":

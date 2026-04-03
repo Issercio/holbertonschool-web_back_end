@@ -4,10 +4,6 @@ Module for Cache class to interact with Redis and store data in a Redis database
 Provides decorators for counting method calls and storing call history (inputs and outputs).
 """
 
-import redis
-import uuid
-from typing import Union, Callable, Any
-import functools
 
 def call_history(method: Callable) -> Callable:
     """
